@@ -1,0 +1,9 @@
+fastapi
+langchain
+langchain-ollama
+pandas
+scipy
+statsmodels
+langgraph
+uvicorn
+trafilatura
