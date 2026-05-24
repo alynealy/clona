@@ -1,0 +1,56 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    name: Build release artifact
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install backend dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-statistical-agent.txt
+
+      - name: Run backend tests
+        run: pytest backend/tests
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install frontend dependencies
+        run: npm ci
+
+      - name: Build frontend
+        run: npm run build
+
+      - name: Create release folder
+        run: |
+          mkdir -p release/backend release/checkwise_stats
+          cp backend/*.py release/backend/
+          cp checkwise_stats/*.py release/checkwise_stats/
+          cp -R dist release/frontend-dist
+          cp requirements-statistical-agent.txt release/
+          cp package.json package-lock.json release/
+          cp README.md release/
+
+      - name: Upload release artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: application-release
+          path: release
