@@ -1,6 +1,9 @@
 # CheckWise
 
+<<<<<<< HEAD
 Multi-agent framework for high-precision content forensics. Uses a hybrid architecture of cloud-based web grounding and local statistical analysis to detect machine-generated patterns, rhythmic monotony, and factual hallucinations.
+=======
+CheckWise is the existing Vite/React UI for AI-generated text detection.
 
 ## Statistical Agent
 
@@ -11,7 +14,7 @@ The repository now includes a Python statistical agent in [`checkwise_stats/`](.
 3. backend calls the LangGraph statistical agent
 4. frontend renders the returned answer and structured results inside the existing checker page
 
-### What it doess
+### What it does
 
 - Accepts a user question plus a pandas `DataFrame` or file-backed dataset
 - Uses LangGraph with these nodes:
@@ -56,18 +59,4 @@ The CLI remains available for local testing only. It is no longer the main integ
 4. Sign in through the existing auth page
 5. On the checker page, use the new Statistical Agent panel
 6. Try one of the suggested questions such as `Compare score between the control and treatment groups.`
-
-## CI/CD Pipeline
-
-This repository includes a simple GitHub Actions CI/CD setup for the MDS pipeline requirement.
-
-The CI workflow is located in `.github/workflows/ci.yml`. It runs on every push and pull request targeting `main` or `develop`. The workflow checks out the repository, sets up Python 3.12, installs the backend dependencies from `requirements-statistical-agent.txt`, and runs the backend tests with `pytest backend/tests`. It also sets up Node.js 20, installs the frontend dependencies with `npm ci`, and builds the Vite frontend with `npm run build`.
-
-The CD workflow is located in `.github/workflows/cd.yml`. It runs on every push to `main`. The workflow repeats the backend validation, builds the frontend, creates a release folder, and uploads it as a GitHub Actions artifact named `application-release`.
-
-For the university demo, this satisfies the MDS CI/CD requirement because the project automatically validates backend tests and frontend build on code changes, and it produces a downloadable delivery artifact from the `main` branch .
-
-
-
-COME ON
-
+>>>>>>> 7ac1a21 (Adaug agentul statistic)

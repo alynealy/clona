@@ -32,23 +32,23 @@ const AgentCard = ({ agent, index, isOpen, onToggle, modalContent }: AgentCardPr
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: index * 0.1, duration: 0.4 }}
         onClick={onToggle}
-        className="group cursor-pointer rounded-lg border border-border bg-card p-5 transition-all hover:border-primary/40 hover:cyber-glow"
+        className="group cursor-pointer rounded-lg border border-slate-200 bg-white p-5 shadow-sm transition-all hover:border-yellow-500/40 hover:shadow-md dark:border-border dark:bg-card dark:shadow-none dark:hover:border-primary/40 dark:hover:cyber-glow"
       >
         <div className={`mb-3 inline-flex rounded-md bg-gradient-to-br ${agent.color} p-2.5 text-primary-foreground`}>
           {iconMap[agent.icon]}
         </div>
-        <h3 className="mb-2 text-sm font-semibold leading-snug">{agent.name}</h3>
-        <p className="text-xs leading-relaxed text-muted-foreground">{agent.description}</p>
+        <h3 className="mb-2 text-sm font-semibold leading-snug text-slate-900 dark:text-foreground">{agent.name}</h3>
+        <p className="text-xs leading-relaxed text-slate-600 dark:text-muted-foreground">{agent.description}</p>
       </motion.div>
 
       <Dialog open={isOpen} onOpenChange={(open) => !open && onToggle()}>
-        <DialogContent className="max-h-[85vh] overflow-y-auto border-border bg-card sm:max-w-xl">
+        <DialogContent className="max-h-[85vh] overflow-y-auto border-slate-200 bg-white sm:max-w-xl dark:border-border dark:bg-card">
           <DialogHeader>
             <div className={`mb-3 inline-flex w-fit rounded-md bg-gradient-to-br ${agent.color} p-3 text-primary-foreground`}>
               {iconMap[agent.icon]}
             </div>
-            <DialogTitle>{agent.name}</DialogTitle>
-            <DialogDescription className="max-w-none text-sm leading-7 text-muted-foreground">
+            <DialogTitle className="text-slate-900 dark:text-foreground">{agent.name}</DialogTitle>
+            <DialogDescription className="max-w-none text-sm leading-7 text-slate-600 dark:text-muted-foreground">
               {agent.details}
             </DialogDescription>
           </DialogHeader>

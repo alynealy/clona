@@ -16,7 +16,13 @@ const LandingPage = () => {
   const [openAgent, setOpenAgent] = useState<string | null>(null);
 
   return (
-    <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit" className="relative min-h-screen">
+    <motion.div
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      className="relative min-h-screen bg-slate-50 text-slate-900 dark:bg-background dark:text-foreground"
+    >
       <AnimatedBackground />
 
       {/* Hero */}
@@ -27,15 +33,15 @@ const LandingPage = () => {
           transition={{ duration: 0.7 }}
           className="max-w-3xl"
         >
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-medium text-primary">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-yellow-300 bg-white px-4 py-1.5 text-xs font-medium text-yellow-700 shadow-sm dark:border-primary/30 dark:bg-primary/10 dark:text-primary dark:shadow-none">
             <Zap size={12} />
             Multi-Agent AI Detection
           </div>
-          <h1 className="mb-6 text-4xl font-black tracking-tight sm:text-6xl lg:text-7xl">
+          <h1 className="mb-6 text-4xl font-black tracking-tight text-slate-900 dark:text-foreground sm:text-6xl lg:text-7xl">
             AI Content Detection with{" "}
-            <span className="text-gradient">CheckWise</span>
+            <span className="text-yellow-600 dark:text-yellow-400">CheckWise</span>
           </h1>
-          <p className="mx-auto mb-8 max-w-xl text-base text-muted-foreground sm:text-lg">
+          <p className="mx-auto mb-8 max-w-xl text-base text-slate-600 dark:text-muted-foreground sm:text-lg">
             Powerful AI content detection built for accuracy, speed, and clarity.
           </p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
@@ -48,7 +54,7 @@ const LandingPage = () => {
             </Link>
             <Link
               to="/register"
-              className="inline-flex items-center gap-2 rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-secondary"
+              className="inline-flex items-center gap-2 rounded-lg border border-slate-300 bg-white px-6 py-3 text-sm font-medium text-slate-700 shadow-sm transition-colors hover:bg-slate-100 dark:border-border dark:bg-transparent dark:text-foreground dark:shadow-none dark:hover:bg-secondary"
             >
               Create Account
             </Link>
@@ -59,11 +65,11 @@ const LandingPage = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8, duration: 1 }}
-          className="absolute bottom-8 flex flex-col items-center text-xs text-muted-foreground"
+          className="absolute bottom-8 flex flex-col items-center text-xs text-slate-500 dark:text-muted-foreground"
         >
           <span>Scroll to learn more</span>
-          <motion.div animate={{ y: [0, 6, 0] }} transition={{ duration: 1.5, repeat: Infinity }} className="mt-2 h-6 w-4 rounded-full border border-muted-foreground/30 p-0.5">
-            <div className="h-1.5 w-full rounded-full bg-muted-foreground/40" />
+          <motion.div animate={{ y: [0, 6, 0] }} transition={{ duration: 1.5, repeat: Infinity }} className="mt-2 h-6 w-4 rounded-full border border-slate-400/40 p-0.5 dark:border-muted-foreground/30">
+            <div className="h-1.5 w-full rounded-full bg-slate-400/50 dark:bg-muted-foreground/40" />
           </motion.div>
         </motion.div>
       </section>
@@ -77,8 +83,8 @@ const LandingPage = () => {
             viewport={{ once: true }}
             className="mb-12 text-center"
           >
-            <h2 className="mb-3 text-2xl font-bold sm:text-3xl">How AI Text Detection Works</h2>
-            <p className="mx-auto max-w-2xl text-muted-foreground">
+            <h2 className="mb-3 text-2xl font-bold text-slate-900 dark:text-foreground sm:text-3xl">How AI Text Detection Works</h2>
+            <p className="mx-auto max-w-2xl text-slate-600 dark:text-muted-foreground">
               Four specialized agents, one final verdict. Each contributes a different text detection approach.
             </p>
           </motion.div>
@@ -98,7 +104,7 @@ const LandingPage = () => {
       </section>
 
       {/* Stats */}
-      <section className="relative border-t border-border px-4 py-24">
+      <section className="relative border-t border-slate-200 px-4 py-24 dark:border-border">
         <div className="container mx-auto grid max-w-4xl gap-8 sm:grid-cols-3">
           {[
             { icon: Shield, label: "Accuracy Rate", value: "96.4%" },
@@ -113,18 +119,18 @@ const LandingPage = () => {
               transition={{ delay: i * 0.15 }}
               className="flex flex-col items-center gap-2 text-center"
             >
-              <stat.icon size={20} className="text-primary" />
-              <span className="text-3xl font-black">{stat.value}</span>
-              <span className="text-sm text-muted-foreground">{stat.label}</span>
+              <stat.icon size={20} className="text-yellow-600 dark:text-primary" />
+              <span className="text-3xl font-black text-slate-900 dark:text-foreground">{stat.value}</span>
+              <span className="text-sm text-slate-600 dark:text-muted-foreground">{stat.label}</span>
             </motion.div>
           ))}
         </div>
       </section>
 
       {/* CTA */}
-      <section className="relative border-t border-border px-4 py-24 text-center">
+      <section className="relative border-t border-slate-200 px-4 py-24 text-center dark:border-border">
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-          <h2 className="mb-4 text-2xl font-bold">Ready to verify your text?</h2>
+          <h2 className="mb-4 text-2xl font-bold text-slate-900 dark:text-foreground">Ready to verify your text?</h2>
           <Link
             to="/checker"
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-3.5 text-sm font-bold text-primary-foreground cyber-glow hover:cyber-glow-strong"
